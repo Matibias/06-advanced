@@ -29,17 +29,41 @@ export const promiseComponent = ( element ) => {
   const id1 = "5d86371f233c9f2425f16916";
   const id2 = "5d86371f97c29d020f1e1f6d";
 
-  findHero(id1)
-    .then( (hero1) => {
+
+  // Ejecuta todas las promesas al mismo tiempo.
+  // recomendable solo si ninguna promesa depende de la respuesta de la otra
+  Promise.all([
+    findHero(id1),
+    findHero(id2),
+  ])
+  .then(([hero1, hero2]) => renderTwoHeroes(hero1,hero2))
+  .catch( renderError )
+
+
+  //! Forma 2
+  // let hero1; 
+  // findHero(id1)
+  //   .then( hero => {
+  //     hero1 = hero;
+  //     return findHero(id2);
+  //   }).then( hero2 => {
+  //     renderTwoHeroes(hero1, hero2)
+  //   })
+  //   .catch(renderError)
+
+
+  //! Forma 1
+  // findHero(id1)
+  //   .then( (hero1) => {
 
       
-      findHero(id2)
-        .then((hero2) => {
-          renderTwoHeroes(hero1, hero2)
-        })
+  //     findHero(id2)
+  //       .then((hero2) => {
+  //         renderTwoHeroes(hero1, hero2)
+  //       })
 
-    } )
-    .catch(error => renderError(error))
+  //   } )
+  //   .catch(error => renderError(error))
 }
 
 /**
