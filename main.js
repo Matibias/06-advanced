@@ -3,6 +3,7 @@ import javascriptLogo from './javascript.svg'
 import { EnvironmentsComponent } from './src/concepts/01-environments'
 import { callbacksComponent } from './src/concepts/02-callbacks'
 import { promiseComponent } from './src/concepts/03-promises'
+import { PromiseRaceComponent } from './src/concepts/04-promises-race'
 
 
 document.querySelector('#app').innerHTML = `
@@ -23,4 +24,5 @@ document.querySelector('#app').innerHTML = `
 const element = document.querySelector('.card')
 
 // callbacksComponent(element)
-promiseComponent(element)
+// promiseComponent(element)
+PromiseRaceComponent(element)
